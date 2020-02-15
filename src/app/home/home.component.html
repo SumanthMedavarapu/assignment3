@@ -1,0 +1,118 @@
+
+<html>
+  
+
+  <body>
+
+
+
+
+<div *ngIf="currentuser()=='true'" >
+  <nav class="navbar navbar-dark bg-transparent">
+    <h2 class="navbar-brand" style="color: blue;"><b>Nutrition </b></h2>
+    <form class="form-inline">
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit" (click)="logout()">Logout</button>
+    </form>
+  </nav>
+<!--  Start-->
+  <div class="parent-container">
+    <div class="child-container">
+      <h2 align="center">Welcome, <b>{{userName}}</b></h2>
+<br>
+      <form>
+        <h3>Enter your favourite food and place!!</h3><br>
+        <div class="form-group" align="center">
+          <div class="form-group col-lg-6 col-lg-offset-3 input-group">
+            <input type="text" class="form-control" placeholder="Enter your food name" #recipe>&nbsp;
+            <input type="text" class="form-control" placeholder="Enter your favourite Place" #place>
+          </div>
+          <button type="button" class="btn btn-light" (click)="getVenues()">Search</button>
+
+        </div>
+      </form>
+    </div>
+  </div><br><br>
+  <div class="container-fluid" *ngIf="calories!=null">
+    <div class="row">
+    
+      <div class="col-lg-4" >
+        <div class="panel panel-default">
+          <div class="panel-heading" style="color:blue"><b>Online Recipe's:</b></div>
+          <div class="panel-body">
+            <div *ngFor="let recipe of recipeList" class="list-group-item clearfix">
+              <div class="pull-left">
+                <h5 class="list-group-item-heading">{{ recipe.name }}</h5>
+                <a href="{{recipe.url}}" class="list-group-item-text">Visit</a>
+              </div>
+
+              <span class="pull-right">
+          <img src="{{recipe.icon}}" style="width: 70px; height: 50px;" align="center"/>
+
+              </span>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-lg-4">
+        <div class="panel panel-default">
+          <div class="panel-heading" style="color:blue"><b>Nearby Stores:</b></div>
+          <div class="panel-body">
+
+            <div *ngFor="let venue of venueList" class="list-group-item clearfix">
+              <div>
+                <h5 class="list-group-item-heading">{{ venue.name }}</h5>
+              </div>
+
+              <span>
+             <a href="http://maps.google.com/maps?saddr={{currentLat}},{{currentLong}}
+             &daddr={{venue.location.formattedAddress[0]}},{{venue.location.formattedAddress[1]}},{{venue.location.formattedAddress[2]}}">
+               <img src="https://cdn4.iconfinder.com/data/icons/tupix-1/30/direction-512.png" width="20" height="20"></a>
+      </span>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    
+
+      <div class="col-lg-4">
+        <div class="panel panel-default">
+          <div class="panel-heading" style="color:blue;"><b>Nutrition:</b></div>
+          <div class="panel-body">
+            <div *ngIf="calories != null" class="list-group-item clearfix">
+              
+                <h4 class="list-group-item-heading">Calories: {{ calories }}</h4>
+                <h4 class="list-group-item-heading">Serving Weight: {{ weight }}g</h4>
+              
+            </div>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  
+</div>
+</div>
+
+ 
+
+
+<!--  //End-->
+<!--<button (click)="logout()">Logout</button>-->
+<!--</div>-->
+
+<div *ngIf="currentuser()!='true'">
+{{loginr()}};
+</div>
+
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=2XILrYtO"></script>
+
+
+</body>
+</html>

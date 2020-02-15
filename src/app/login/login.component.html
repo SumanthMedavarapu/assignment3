@@ -1,0 +1,38 @@
+
+<html>
+
+<body>
+
+
+
+
+<div class="parent-container">
+  <div class="child-container">
+
+    <h1 style="padding-top: 5%" style="font-size:50px">Nutrition App</h1>
+    <div class="row" style="padding: 7rem 5rem">
+      <div class="col-md-7">
+        <br>
+        <h2>Get the nutrition & calories of your favourite food .</h2>
+      </div>
+      <div class="col-md-5" style="padding: 0 7rem">
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+    <div class="form-group">
+      <input type="email" name="email_id" placeholder="E-mail" ngModel class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="password" name="passwd" placeholder="Password" ngModel class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Log In</button>
+    <hr class="style14">No Account?<br>
+    <button type="button" class="btn btn-primary" (click)="router.navigate(['/signup'])">SignUp</button>
+  </form>
+</div>
+  </div>
+</div>
+</div>
+
+</body>
+
+
+</html>
